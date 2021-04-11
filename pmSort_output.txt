@@ -1,0 +1,64 @@
+$> ./a.out 40 4 1
+N = 40
+Thread Count = 4
+
+-- The Array-- 
+[ 23, 6, 17, 35, 33, 15, 26, 12, 9, 21, 9, 2, 22, 18, 29, 7, 33, 16, 11, 2, 2, 27, 10, 19, 3, 6, 20, 26, 12, 16, 11, 8, 7, 29, 22, 10, 22, 3, 27, 15 ]
+----------------
+Unsorted Thread #1	[ 9,  2, 22, 18, 29,  7, 33, 16, 11,  2]
+Unsorted Thread #3	[11,  8,  7, 29, 22, 10, 22,  3, 27, 15]
+Unsorted Thread #0	[23,  6, 17, 35, 33, 15, 26, 12,  9, 21]
+Unsorted Thread #2	[ 2, 27, 10, 19,  3,  6, 20, 26, 12, 16]
+Sorted BY Thread #0	[ 6,  9, 12, 15, 17, 21, 23, 26, 33, 35]
+Sorted BY Thread #2	[ 2,  3,  6, 10, 12, 16, 19, 20, 26, 27]
+Sorted BY Thread #1	[ 2,  2,  7,  9, 11, 16, 18, 22, 29, 33]
+Sorted BY Thread #3	[ 3,  7,  8, 10, 11, 15, 22, 22, 27, 29]
+
+-- The Array-- 
+[ 2, 2, 2, 3, 3, 6, 6, 7, 7, 8, 9, 9, 10, 10, 11, 11, 12, 12, 15, 15, 16, 16, 17, 18, 19, 20, 21, 22, 22, 22, 23, 26, 26, 27, 27, 29, 29, 33, 33, 35 ]
+----------------
+The list is sorted :) 
+Time Elapsed: 0.000745256 seconds
+
+
+--------------------------------------------------------------
+
+$> ./a.out 1000000000 1
+N = 1000000000
+Thread Count = 1
+The list is sorted :) 
+Time Elapsed: 230.995 seconds
+
+
+$> ./a.out 1000000000 2
+N = 1000000000
+Thread Count = 2
+The list is sorted :) 
+Time Elapsed: 422.468 seconds
+
+$> ./a.out 10000000 16
+N = 10000000
+Thread Count = 16
+The list is sorted :) 
+Time Elapsed: 1.45666 seconds
+
+$> ./a.out 1000000000 4
+N = 1000000000
+Thread Count = 4
+The list is sorted :) 
+Time Elapsed: 165.576 seconds
+
+
+$> ./a.out 1000000000 8
+N = 1000000000
+Thread Count = 8
+The list is sorted :) 
+Time Elapsed: 153.767 seconds
+
+$> ./a.out 1000000000 16
+N = 1000000000
+Thread Count = 16
+The list is sorted :) 
+Time Elapsed: 154.336 seconds
+
+

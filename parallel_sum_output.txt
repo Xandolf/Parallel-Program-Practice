@@ -1,0 +1,438 @@
+I included 2 separate versions of my output. Version 2 is with parallel initialization and parallel sum compilation. It's fastest time was with 8 threads @ 0.440989 seconds. In version 1 only the summing is done in parallel, not the array initialization. Version 1's fastest time was with 8 threads @ 1.53728 seconds.
+
+\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\\/\/
+--------------------------------------------------------------------------------
+Version 2 is parallel initialization and parallel sum computation
+--------------------------------------------------------------------------------
+\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\\/\/
+
+xander@watts:~/CLionProjects/cs176-P2$ g++ -o version2 prog2.cpp -pthread 
+xander@watts:~/CLionProjects/cs176-P2$ ./version2 1
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 499999998
+Partial Sum: 125000000250000000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 1
+Time Elapsed: 2.17781 seconds
+xander@watts:~/CLionProjects/cs176-P2$ ./version2 2
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 249999998
+Partial Sum: 31250000125000000
+________________
+----------------
+Thread ID: 1
+Start Index: 250000000
+Last Index: 499999998
+Partial Sum: 93750000125000000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 2
+Time Elapsed: 1.12254 seconds
+xander@watts:~/CLionProjects/cs176-P2$ ./version2 4
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 124999998
+Partial Sum: 7812500062500000
+________________
+----------------
+Thread ID: 1
+Start Index: 125000000
+Last Index: 249999998
+Partial Sum: 23437500062500000
+________________
+----------------
+Thread ID: 2
+Start Index: 250000000
+Last Index: 374999998
+Partial Sum: 39062500062500000
+________________
+----------------
+Thread ID: 3
+Start Index: 375000000
+Last Index: 499999998
+Partial Sum: 54687500062500000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 4
+Time Elapsed: 0.597288 seconds
+xander@watts:~/CLionProjects/cs176-P2$ ./version2 8
+----------------
+Thread ID: 1
+Start Index: 62500000
+Last Index: 124999998
+Partial Sum: 5859375031250000
+________________
+----------------
+Thread ID: 7
+Start Index: 437500000
+Last Index: 499999998
+Partial Sum: 29296875031250000
+________________
+----------------
+Thread ID: 5
+Start Index: 312500000
+Last Index: 374999998
+Partial Sum: 21484375031250000
+________________
+----------------
+Thread ID: 4
+Start Index: 250000000
+Last Index: 312499998
+Partial Sum: 17578125031250000
+________________
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 62499998
+Partial Sum: 1953125031250000
+________________
+----------------
+Thread ID: 2
+Start Index: 125000000
+Last Index: 187499998
+Partial Sum: 9765625031250000
+________________
+----------------
+Thread ID: 3
+Start Index: 187500000
+Last Index: 249999998
+Partial Sum: 13671875031250000
+________________
+----------------
+Thread ID: 6
+Start Index: 375000000
+Last Index: 437499998
+Partial Sum: 25390625031250000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 8
+Time Elapsed: 0.440989 seconds
+xander@watts:~/CLionProjects/cs176-P2$ ./version2 16
+----------------
+Thread ID: 5
+Start Index: 156250000
+Last Index: 187499998
+Partial Sum: 5371093765625000
+________________
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 31249998
+Partial Sum: 488281265625000
+________________
+----------------
+Thread ID: 1
+Start Index: 31250000
+Last Index: 62499998
+Partial Sum: 1464843765625000
+________________
+----------------
+Thread ID: 14
+Start Index: 437500000
+Last Index: 468749998
+Partial Sum: 14160156265625000
+________________
+----------------
+Thread ID: 4
+Start Index: 125000000
+Last Index: 156249998
+Partial Sum: 4394531265625000
+________________
+----------------
+Thread ID: 3
+Start Index: 93750000
+Last Index: 124999998
+Partial Sum: 3417968765625000
+________________
+----------------
+Thread ID: 10
+Start Index: 312500000
+Last Index: 343749998
+Partial Sum: 10253906265625000
+________________
+----------------
+Thread ID: 2
+Start Index: 62500000
+Last Index: 93749998
+Partial Sum: 2441406265625000
+________________
+----------------
+Thread ID: 12
+Start Index: 375000000
+Last Index: 406249998
+Partial Sum: 12207031265625000
+________________
+----------------
+Thread ID: 8
+Start Index: 250000000
+Last Index: 281249998
+Partial Sum: 8300781265625000
+________________
+----------------
+Thread ID: 9
+Start Index: 281250000
+Last Index: 312499998
+Partial Sum: 9277343765625000
+________________
+----------------
+Thread ID: 13
+Start Index: 406250000
+Last Index: 437499998
+Partial Sum: 13183593765625000
+________________
+----------------
+Thread ID: 11
+Start Index: 343750000
+Last Index: 374999998
+Partial Sum: 11230468765625000
+________________
+----------------
+Thread ID: 7
+Start Index: 218750000
+Last Index: 249999998
+Partial Sum: 7324218765625000
+________________
+----------------
+Thread ID: 15
+Start Index: 468750000
+Last Index: 499999998
+Partial Sum: 15136718765625000
+________________
+----------------
+Thread ID: 6
+Start Index: 187500000
+Last Index: 218749998
+Partial Sum: 6347656265625000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 16
+Time Elapsed: 0.453152 seconds
+xander@watts:~/CLionProjects/cs176-P2$
+
+
+
+
+
+
+\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\\/\/
+--------------------------------------------------------------------------------
+Version 1 is serial array intiaiation with parallel summing 
+--------------------------------------------------------------------------------
+\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\/\\/\/
+
+
+xander@watts:~/CLionProjects/cs176-P2$ ./version1 1
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 499999998
+Partial Sum: 125000000250000000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 1
+Time Elapsed: 2.10478 seconds
+xander@watts:~/CLionProjects/cs176-P2$ ./version1 2
+----------------
+Thread ID: 1
+Start Index: 250000000
+Last Index: 499999998
+Partial Sum: 93750000125000000
+________________
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 249999998
+Partial Sum: 31250000125000000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 2
+Time Elapsed: 1.72736 seconds
+xander@watts:~/CLionProjects/cs176-P2$ ./version1 4
+----------------
+Thread ID: 1
+Start Index: 125000000
+Last Index: 249999998
+Partial Sum: 23437500062500000
+________________
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 124999998
+Partial Sum: 7812500062500000
+________________
+----------------
+Thread ID: 2
+Start Index: 250000000
+Last Index: 374999998
+Partial Sum: 39062500062500000
+________________
+----------------
+Thread ID: 3
+Start Index: 375000000
+Last Index: 499999998
+Partial Sum: 54687500062500000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 4
+Time Elapsed: 1.56036 seconds
+xander@watts:~/CLionProjects/cs176-P2$ ./version1 8
+----------------
+Thread ID: 5
+Start Index: 312500000
+Last Index: 374999998
+Partial Sum: 21484375031250000
+________________
+----------------
+Thread ID: 2
+Start Index: 125000000
+Last Index: 187499998
+Partial Sum: 9765625031250000
+________________
+----------------
+Thread ID: 1
+Start Index: 62500000
+Last Index: 124999998
+Partial Sum: 5859375031250000
+________________
+----------------
+Thread ID: 6
+Start Index: 375000000
+Last Index: 437499998
+Partial Sum: 25390625031250000
+________________
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 62499998
+Partial Sum: 1953125031250000
+________________
+----------------
+Thread ID: 4
+Start Index: 250000000
+Last Index: 312499998
+Partial Sum: 17578125031250000
+________________
+----------------
+Thread ID: 3
+Start Index: 187500000
+Last Index: 249999998
+Partial Sum: 13671875031250000
+________________
+----------------
+Thread ID: 7
+Start Index: 437500000
+Last Index: 499999998
+Partial Sum: 29296875031250000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 8
+Time Elapsed: 1.53728 seconds
+xander@watts:~/CLionProjects/cs176-P2$ ./version1 16
+----------------
+Thread ID: 0
+Start Index: 0
+Last Index: 31249998
+Partial Sum: 488281265625000
+________________
+----------------
+Thread ID: 1
+Start Index: 31250000
+Last Index: 62499998
+Partial Sum: 1464843765625000
+________________
+----------------
+Thread ID: 12
+Start Index: 375000000
+Last Index: 406249998
+Partial Sum: 12207031265625000
+________________
+----------------
+Thread ID: 6
+Start Index: 187500000
+Last Index: 218749998
+Partial Sum: 6347656265625000
+________________
+----------------
+Thread ID: 13
+Start Index: 406250000
+Last Index: 437499998
+Partial Sum: 13183593765625000
+________________
+----------------
+Thread ID: 9
+Start Index: 281250000
+Last Index: 312499998
+Partial Sum: 9277343765625000
+________________
+----------------
+Thread ID: 3
+Start Index: 93750000
+Last Index: 124999998
+Partial Sum: 3417968765625000
+________________
+----------------
+Thread ID: 15
+Start Index: 468750000
+Last Index: 499999998
+Partial Sum: 15136718765625000
+________________
+----------------
+Thread ID: 4
+Start Index: 125000000
+Last Index: 156249998
+Partial Sum: 4394531265625000
+________________
+----------------
+Thread ID: 5
+Start Index: 156250000
+Last Index: 187499998
+Partial Sum: 5371093765625000
+________________
+----------------
+Thread ID: 8
+Start Index: 250000000
+Last Index: 281249998
+Partial Sum: 8300781265625000
+________________
+----------------
+Thread ID: 2
+Start Index: 62500000
+Last Index: 93749998
+Partial Sum: 2441406265625000
+________________
+----------------
+Thread ID: 14
+Start Index: 437500000
+Last Index: 468749998
+Partial Sum: 14160156265625000
+________________
+----------------
+Thread ID: 10
+Start Index: 312500000
+Last Index: 343749998
+Partial Sum: 10253906265625000
+________________
+----------------
+Thread ID: 7
+Start Index: 218750000
+Last Index: 249999998
+Partial Sum: 7324218765625000
+________________
+----------------
+Thread ID: 11
+Start Index: 343750000
+Last Index: 374999998
+Partial Sum: 11230468765625000
+________________
+Global Sum: 125000000250000000
+Number of Threads: 16
+Time Elapsed: 1.52421 seconds
+xander@watts:~/CLionProjects/cs176-P2$ 
+ 
+
